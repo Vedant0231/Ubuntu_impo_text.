@@ -1,5 +1,7 @@
 # To generate ssh key in ubuntu
 
+#write this command in terminal to generate ssh key
+
 cd ~/.ssh/
 
 ssh-keygen
