@@ -1,0 +1,8 @@
+# To generate ssh key in ubuntu
+
+cd ~/.ssh/
+
+ssh-keygen
+
+cat id_rsa.pub 
+
