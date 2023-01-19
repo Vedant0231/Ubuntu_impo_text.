@@ -48,4 +48,4 @@ pyenv activate virtualenv_name  "to activate virtualenv"
 
 pyenv deactivate virtualenv_name  "to deactivate virtualenv"
 
-
+pyenv virtualenvs   "to see all virtualenv which has been created"
