@@ -26,3 +26,24 @@ pyenv virtualenvwrapper_lazy
 exec $SHELL
 
 exit
+
+
+
+
+# pyenv commands 
+
+pyenv install python-version  "to install python"
+
+pyenv local version  "to set python version locally"
+
+pyenv global version  "to st python version globally"
+
+pyenv virtualenv virtualenv_name  "to create new virtualenv"
+
+pyenv virtualenv-delete virtualenv_name  "to delete virtualenv"
+
+pyenv activate virtualenv_name  "to activate virtualenv"
+
+pyenv deactivate virtualenv_name  "to deactivate virtualenv"
+
+
