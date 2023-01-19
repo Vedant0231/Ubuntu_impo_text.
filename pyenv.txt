@@ -34,6 +34,8 @@ exit
 
 pyenv install python-version  "to install python"
 
+pyenv uninstall python-version  "to uninstall python"
+
 pyenv local version  "to set python version locally"
 
 pyenv global version  "to st python version globally"
