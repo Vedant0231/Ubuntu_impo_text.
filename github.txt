@@ -1,0 +1,44 @@
+# github commands
+
+"""git config"""
+git config --global user.name "username"
+git config --global user.email "useremail"
+git config --global --edit
+
+
+"""to push code in github"""
+
+git init 
+git add *
+git commit -m "message"
+git remote add origin url
+git branch -M main
+git push -u origin main
+
+
+"""to clone code from github"""
+
+git clone giturl
+
+
+"""git branch"""
+
+git status
+git log
+git branch <name>
+git checkout <branchname>
+git checkout <master>
+git branch
+git checkout -b <branchname>
+git merger branchname
+
+
+"""git url commands"""
+
+git remote get-url origin
+git set-url giturl
+
+
+"""fetch"""
+
+git fetch --all
