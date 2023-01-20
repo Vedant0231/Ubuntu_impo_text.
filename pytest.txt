@@ -1,0 +1,54 @@
+# pytest basic imformation.
+
+pytest is a software test framework, which means pytest is a command-line tool 
+that automatically finds tests you've written, runs the tests, and reports the results.
+
+to install pytest-        pip install pytest
+
+Create a folder and named it tests. Then create file with filename_test or test_filename.
+
+pytest - v test_sample.py to run test file.
+
+pytest - v --capture=no test_sample.py    - to show prints in terminal
+
+pytest - v --capture=no test_sample.py --html=report.html   -- it will  create a link which redirct us to a html page which give proper presentation about test.
+
+--------------------------------------------------------------
+
+import unittest
+
+class Test(unittest.Testcase):
+
+setUp:
+
+def setUp(self):
+
+print("this is suit level setup")   - This will show  this message at the begining of the test.
+
+---------------------------------------------
+
+tearDown:
+
+def tearDown(self):
+
+print("this is suit level teardown")   - This will show  this message at the end of the test.
+
+----------------------------------------------
+
+pip install pytest-ordering
+
+this lib is use to make test according to order.
+
+@pytest.mark.run(order=1)  this will perform according to the order
+
+def test_app1
+
+
+@pytest.mark.first    this will perform this test first
+
+def test_app2
+
+
+@pytest.mark.last    this will perform this test last
+
+def test_app3
