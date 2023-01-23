@@ -1,0 +1,54 @@
+#some important point for docker
+
+what is docker?
+
+Docker is an open source platform that enables developers to build, deploy, run, 
+update and manage containers—standardized, executable components that combine 
+application source code with the operating system (OS) libraries and dependencies 
+required to run that code in any environment.
+
+Containers simplify development and delivery of distributed applications. 
+They have become increasingly popular as organizations shift to cloud-native 
+development and hybrid multicloud environments. It’s possible for developers to 
+create containers without Docker, by working directly with capabilities built into 
+Linux and other operating systems. But Docker makes containerization faster, easier and safer. 
+At this writing, Docker reported over 13 million developers using the platform (link resides outside ibm.com)
+
+
+docker -v
+
+docker run
+
+docker pull imagename
+
+docker images
+
+docker ps -a
+
+docker run image name or id
+
+docker run --name image name -d 
+
+docker exec -it containerid 
+
+docker stop containerid
+
+docker rm containerid
+
+docker rmi imageid
+
+docker build-t new image name .
+
+docker login
+
+docker commit
+
+docker push
+
+docker copy
+
+docker start -i containerid or name
+
+docker-compose -f <filename> up -d
+
+docker-compose logs -f container name

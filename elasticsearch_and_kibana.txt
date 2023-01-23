@@ -1,0 +1,205 @@
+#some important point about elasticsearch and kibana.
+
+GET _cat/indices 
+
+GET indexname/_serach
+
+GET _cat/indices?v=true
+
+GET _cat/indices?help
+
+#to create index
+
+POST indexname/_doc/1
+{
+    "title":"name",
+    "number":"98989890",
+    "address":"surat"
+}
+
+
+#to update index
+
+POST indexname/_update/1
+{
+    "doc":{
+        "length": 200
+    }
+}
+
+
+#mapping
+
+POST indexname/_mapping
+{
+    "properties":{
+        "title":{
+            "type":"text"
+        },
+        "length":{
+            "type":"integer"
+        },
+        "writer":{
+            "type":"keyword"
+        }
+    }
+}
+
+# query
+
+"""term"""
+
+{
+  "query": {
+    "term": {
+      "user.id": {
+        "value": "kimchy"
+      }
+    }
+  }
+}
+
+
+"""terms"""
+
+GET kibana_sample_data_flights/_search
+{
+  "query": {
+    "terms": {
+      "DestCityName": [
+        "Hyderabad",
+        "Zurich"
+      ]
+    }
+  }
+}
+
+
+"""multi-match"""
+
+GET kibana_sample_data_ecommerce/_search
+{
+  "query": {
+    "multi_match": {
+      "query": "Rabbia",
+      "fields": ["customer_first_name","customer_full_name"]
+    }
+  }
+}
+
+
+
+"""match"""
+
+{
+  "query": {
+    "match": {
+      "message": {
+        "query": "this is a test"
+      }
+    }
+  }
+}
+
+
+"""range"""
+
+{
+  "query": {
+    "range": {
+      "age": {
+        "gte": 10,
+        "lte": 20,
+        "boost": 2.0
+      }
+    }
+  }
+}
+
+"""bool"""
+
+GET kibana_sample_data_ecommerce/_search
+{
+  "query": {
+    "bool": {
+      "must": [
+        {
+          "match": {
+            "category": "Women's Clothing"
+          }
+        }
+      ],
+      "should": [
+        {
+          "range": {
+            "taxless_price": {
+              "gte": 10,
+              "lte": 40
+            }
+          }
+        }
+      ],
+      "must_not": [
+        {
+          "term": {
+            "manufacturer": {
+              "value": "Spherecords"
+            }
+          }
+        }
+      ]
+    }
+  }
+}
+
+
+"""to analyze"""
+
+GET indexname/_analyze
+{
+    "analyzer":"standard" or "whitespace"
+    "text":"random text"
+}
+
+
+"""aggs"""
+
+GET kibana_sample_data_ecommerce/_search
+{"size": 0, 
+  "aggs": {
+    "currency": {
+      "terms": {
+        "field": "day_of_week",
+        "size": 10
+      }
+      , "aggs": {
+        "NAME": {
+          "sum": {
+            "field": "products.price"
+          }
+        }
+      }
+    }
+  }
+}
+
+
+"""to create analyzer"""
+
+{
+  "settings": {
+    "analysis": {
+      "analyzer": {
+        "my_custom_analyzer": {
+          "type": "custom", 
+          "tokenizer": "standard",
+          "char_filter": {},
+          "filter": [
+            "lowercase",
+            "asciifolding"
+          ]
+        }
+      }
+    }
+  }
+}
