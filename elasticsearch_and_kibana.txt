@@ -203,3 +203,26 @@ GET kibana_sample_data_ecommerce/_search
     }
   }
 }
+
+
+"""dynamic mapping"""
+
+PUT dynamicindex1
+{
+  "mappings": {
+    "dynamic": false, 
+    "properties": {
+      "user": { 
+        "properties": {
+          "name": {
+            "type": "text"
+          },
+          "social_networks": {
+            "dynamic": true, 
+            "properties": {}
+          }
+        }
+      }
+    }
+  }
+}
