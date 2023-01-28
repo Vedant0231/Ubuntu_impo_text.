@@ -226,3 +226,48 @@ PUT dynamicindex1
     }
   }
 }
+
+
+"""sort"""
+
+GET kibana_sample_data_ecommerce/_search
+{
+  "query": {
+    "bool": {
+      "must": [
+        {
+          "match": {
+            "customer_gender": "MALE"
+          }
+        }
+      ],
+      "should": [
+        {
+          "range": {
+            "products.price": {
+              "gte": 30,
+              "lte": 60
+            }
+          }
+        }
+      ],
+      "must_not": [
+        {
+          "term": {
+            "manufacturer": {
+              "value": "Oceanavigations"
+            }
+          }
+        }
+      ]
+    }
+  },
+  "sort": [
+    {
+      "products.base_price": {
+        "order": "asc"
+      }
+    }
+  ]
+}
+
