@@ -1,15 +1,23 @@
-#some important point about elasticsearch and kibana.
+#SOME IMPORTANT POINT ABOUT ELASTICSEARCH AND KIBANA.
 
+
+"""to get all created indices """
 GET _cat/indices 
 
+
+"""to get data of an index"""
 GET indexname/_serach
 
+
+"""to get created indices with more details """
 GET _cat/indices?v=true
 
+
+"""to get help"""
 GET _cat/indices?help
 
-#to create index
 
+"""to create index"""
 POST indexname/_doc/1
 {
     "title":"name",
@@ -18,8 +26,7 @@ POST indexname/_doc/1
 }
 
 
-#to update index
-
+"""to update index"""
 POST indexname/_update/1
 {
     "doc":{
@@ -28,8 +35,7 @@ POST indexname/_update/1
 }
 
 
-#mapping
-
+"""this is how we create mapping for index"""
 POST indexname/_mapping
 {
     "properties":{
@@ -45,10 +51,9 @@ POST indexname/_mapping
     }
 }
 
-# query
+#QUERY
 
 """term"""
-
 {
   "query": {
     "term": {
@@ -90,7 +95,6 @@ GET kibana_sample_data_ecommerce/_search
 
 
 """match"""
-
 {
   "query": {
     "match": {
@@ -103,7 +107,6 @@ GET kibana_sample_data_ecommerce/_search
 
 
 """range"""
-
 {
   "query": {
     "range": {
@@ -116,8 +119,9 @@ GET kibana_sample_data_ecommerce/_search
   }
 }
 
-"""bool"""
 
+
+"""bool"""
 GET kibana_sample_data_ecommerce/_search
 {
   "query": {
@@ -154,7 +158,6 @@ GET kibana_sample_data_ecommerce/_search
 
 
 """to analyze"""
-
 GET indexname/_analyze
 {
     "analyzer":"standard" or "whitespace"
@@ -185,7 +188,6 @@ GET kibana_sample_data_ecommerce/_search
 
 
 """to create analyzer"""
-
 {
   "settings": {
     "analysis": {
@@ -206,7 +208,6 @@ GET kibana_sample_data_ecommerce/_search
 
 
 """dynamic mapping"""
-
 PUT dynamicindex1
 {
   "mappings": {
@@ -229,7 +230,6 @@ PUT dynamicindex1
 
 
 """sort"""
-
 GET kibana_sample_data_ecommerce/_search
 {
   "query": {
@@ -271,12 +271,12 @@ GET kibana_sample_data_ecommerce/_search
   ]
 }
 
+
 """ sort error """
 
 """when we try to sort data by customer_first_name we can get error at mapping beacuse we 
-did not set fielddata:true at index mapping
+did not set fielddata:true at index mapping"""
 
-"""
 GET kibana_sample_data_ecommerce/_search
 {
   "sort": [
@@ -290,7 +290,6 @@ GET kibana_sample_data_ecommerce/_search
 
 
 """there for we need to update mapping by the following method"""
-
 POST kibana_sample_data_ecommerce/_mapping
 {
    "properties" : {
