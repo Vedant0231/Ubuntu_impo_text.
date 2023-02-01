@@ -497,3 +497,32 @@ POST kibana_sample_data_ecommerce/_mapping
       }
 }
 
+
+"""queries"""
+GET kibana_sample_data_ecommerce/_search
+{
+  "query": {
+    "dis_max": {
+      "tie_breaker": 0.7,
+      "boost": 1.2,
+      "queries": [
+        {
+          "term": {
+            "customer_gender": {
+              "value": "MALE"
+            }
+          }
+        },
+        {
+          "term": {
+            "category": {
+              "value": "Men's Clothing"
+            }
+          }
+        }
+      ]
+    }
+  }
+}
+
+
